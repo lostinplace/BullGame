@@ -5,8 +5,19 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="EditMode Tests" t="Include">
+          <e p="EditMode Tests.asmdef" t="Include" />
+          <e p="Puzzle Testing" t="Include">
+            <e p="TestPuzzleGraph.cs" t="Include" />
+            <e p="TestRectSplitting.cs" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
-          <e p="SimpleCameraController.cs" t="Include" />
+          <e p="Main Scripts Assembly.asmdef" t="Include" />
+          <e p="puzzle" t="Include">
+            <e p="PuzzleGraph.cs" t="Include" />
+            <e p="PuzzleSplitter.cs" t="Include" />
+          </e>
         </e>
         <e p="Tutorial_Info" t="Include">
           <e p="Scripts" t="Include">
@@ -25,6 +36,7 @@
           </e>
           <e p="Scripts" t="Include">
             <e p="Isometric.cs" t="Include" />
+            <e p="UltimateIsometricToolkit.asmdef" t="Include" />
           </e>
           <e p="SnappingTool" t="Include">
             <e p="Editor" t="Include">
@@ -35,6 +47,8 @@
         </e>
       </e>
       <e p="Bull In A China Shop.sln" t="IncludeFlat" />
+      <e p="EditModeTests.csproj" t="IncludeRecursive" />
+      <e p="MainScriptsAssembly.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="Temp/bin" t="ExcludeRecursive" />
