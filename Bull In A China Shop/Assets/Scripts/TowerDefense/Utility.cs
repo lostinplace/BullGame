@@ -31,13 +31,10 @@ public class Utility
         converted.y = 0.0f;
         converted.z = toConvert.z;
     }
-    public static Vector3 XZLerpTo( Vector3 toMove, Vector3 to, float speed = 1.0f ) {
-        return XZLerp( toMove, to, speed );
-    }
     public static Vector3 XZLerp( Vector3 toMove, Vector3 along, float speed = 1.0f )
     {
         float y = toMove.y;
-        toMove = Vector3.Lerp( toMove, along, Time.deltaTime );
+        toMove = Vector3.LerpUnclamped( toMove, along, Time.deltaTime * speed );
         toMove.y = y;
         return toMove;
     }

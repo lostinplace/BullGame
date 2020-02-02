@@ -24,15 +24,29 @@ public class Bull : MonoBehaviour
 
     void Update()
     {
+        DebugRay();
         if( chooseStartingNode == true ) {
             ChooseNextNode();
             chooseStartingNode = false;
         }
         if( BullNode.nodes.Contains( currentTarget ) == true )
         {
-            transform.position = Utility.XZLerpTo( 
-                    transform.position, 
-                    currentTarget.transform.position, currentSpeed );
+            if( Mathf.Abs( Vector3.Angle( transform.position, currentTarget.transform.position ) ) > float.Epsilon )
+            {
+                //Not enough time, it just looks!//
+                transform.LookAt( Utility.XYToXZPlane( currentTarget.transform.position ) );
+                /*Debug.Log( Utility.XZLerp( transform.rotation.eulerAngles,
+                        currentTarget.transform.rotation.eulerAngles, .01f ) + "" );*/
+                /*transform.rotation.SetLookRotation( 
+                        Utility.XZLerp( transform.rotation.eulerAngles,
+                        currentTarget.transform.rotation.eulerAngles, 1.0f ) );*/
+            }
+            else
+            {
+                transform.position = Utility.XZLerp(
+                        transform.position,
+                        currentTarget.transform.position, 5.0f );
+            }
         }
     }
 
@@ -61,12 +75,34 @@ public class Bull : MonoBehaviour
     protected float RetrieveBetterAngle( float currentAngle, float queryAngle, 
             CheckAngleType angleQuery )
     {
+        Debug.Log( "angleQuery( currentAngle: " + currentAngle + " ): " + angleQuery( currentAngle ) + " && " +
+                "angleQuery( queryAngle: " + queryAngle + " ): " + angleQuery( queryAngle ) + " && " +
+                "Mathf.Abs( queryAngle: " + queryAngle + " ) < Mathf.Abs( currentAngle: " + currentAngle + " ): " + 
+                Mathf.Abs( queryAngle ) + " < " + Mathf.Abs( currentAngle ) );
+        Debug.Log( "\t!angleQuery( currentAngle ): " + !angleQuery( currentAngle ) + 
+                " && " + " angleQuery( queryAngle: " + queryAngle + " ): " + angleQuery( queryAngle ) );
+        Debug.Log( "\t\tMathf.Abs( queryAngle: " + queryAngle + " ) < Mathf.Abs( currentAngle: " + currentAngle + " ): " +
+                Mathf.Abs( queryAngle ) + " < " + Mathf.Abs( currentAngle ) );
         return ( angleQuery( currentAngle ) &&
                 angleQuery( queryAngle ) && 
                 Mathf.Abs( queryAngle ) < Mathf.Abs( currentAngle ) ) ? queryAngle : 
                         !angleQuery( currentAngle ) && angleQuery( queryAngle ) ? 
                                 queryAngle : Mathf.Abs( queryAngle ) < 
                                 Mathf.Abs( currentAngle ) ? queryAngle : currentAngle;
+    }
+
+    List< Vector3 > dbgPositions = new List< Vector3 >();
+    Vector3 lastBullPositionNormal;
+    List<Vector3> nodePositionNormals = new List<Vector3>();
+    List<Vector3> crossProduccts = new List<Vector3>();
+    void DebugRay()
+    {
+        for( int i = 0; i < dbgPositions.Count; ++i )
+        {
+            Debug.DrawRay( dbgPositions[ i ], Utility.XYToXZPlane( lastBullPositionNormal ), Color.blue );
+            Debug.DrawRay( dbgPositions[ i ], Utility.XYToXZPlane( nodePositionNormals[ i ] ), Color.green );
+            Debug.DrawRay( dbgPositions[ i ], crossProduccts[ i ], Color.red );
+        }
     }
     /// <summary>
     /// Finds the next node the bull should run towards.
@@ -79,22 +115,32 @@ public class Bull : MonoBehaviour
     {
         if( BullNode.nodes.Count <= 0 )
             return null;
-        float angleWithRespectTooBull = float.MaxValue / 20.0f;
-        float currentAngle = float.MaxValue / 20.0f;
+        float angleWithRespectTooBull = float.MaxValue;
+        float currentAngle = float.MaxValue;
         Debug.Log( currentAngle );
         //Save on memory.//
         Vector3 currentNodePosition = new Vector3( 0.0f, 0.0f, 0.0f );
         Vector3 bullPositionNormal = Utility.XZToXYPlane3D( transform.position ).normalized;
         if( direction == ClockDirection.SUPER_POSITION )
-            direction = ( ClockDirection ) Random.Range( 0, 1 );
+            direction = ( ClockDirection ) Random.Range( 0, 2 );
         if( direction == ClockDirection.COUNTER_CLOCKWISE )
             angleWithRespectTooBull = float.MinValue;
         Debug.Log( direction );
         int i = 0;
+
+        lastBullPositionNormal = bullPositionNormal;
+        crossProduccts.Clear();
+        nodePositionNormals.Clear();
+        dbgPositions.Clear();
+
+
         foreach( BullNode currentNode in BullNode.nodes )
         {
             Utility.XZToXYPlane( currentNode.transform.position, out currentNodePosition );
-            angleWithRespectTooBull = Vector3.Cross( bullPositionNormal, currentNodePosition ).z;
+            angleWithRespectTooBull = Vector3.Cross( bullPositionNormal, currentNodePosition.normalized ).z;
+            dbgPositions.Add( new Vector3( currentNodePosition.x, 5.0f, currentNodePosition.y ) );
+            nodePositionNormals.Add( currentNodePosition.normalized );
+            crossProduccts.Add( new Vector3( 0.0f, angleWithRespectTooBull, 0.0f ) );
             Debug.Log( "Unmodified Current Angle@ " + i + ": " + currentAngle );
             Debug.Log( "Angle " + i + ": " + angleWithRespectTooBull );
             //Find the smaller angle in the clockwise or counter clockwise direction.//
@@ -109,6 +155,7 @@ public class Bull : MonoBehaviour
             Debug.Log( "currentAngle@ " + i + ": " + currentAngle );
             if( currentAngle == angleWithRespectTooBull )
                 currentTarget = currentNode;
+            ++i;
         }
         return currentTarget;
     }
