@@ -205,12 +205,15 @@
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/System.Configuration.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/System.EnterpriseServices.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/System.Transactions.dll
+/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/System.Diagnostics.Tracing.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Boo.Lang.Compiler.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Boo.Lang.PatternMatching.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Boo.Lang.Parser.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Boo.Lang.Useful.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Assembly-CSharp.pdb
+/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UltimateIsometricToolkit.pdb
+/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/MainScriptsAssembly.pdb
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEngine.pdb
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEngine.xml
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEditor.pdb

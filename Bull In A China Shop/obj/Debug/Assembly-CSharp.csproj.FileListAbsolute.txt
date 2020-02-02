@@ -1,3 +1,5 @@
+/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Assembly-CSharp.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Assembly-CSharp.pdb
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Boo.Lang.dll
@@ -199,12 +201,15 @@
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/System.Configuration.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/System.EnterpriseServices.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/System.Transactions.dll
+/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/System.Diagnostics.Tracing.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Boo.Lang.Compiler.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Boo.Lang.PatternMatching.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Boo.Lang.Parser.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Boo.Lang.Useful.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEngine.TestRunner.dll
+/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UltimateIsometricToolkit.pdb
+/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/MainScriptsAssembly.pdb
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEngine.pdb
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEngine.xml
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEditor.pdb
@@ -340,8 +345,6 @@
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEngine.XRModule.xml
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEditor.TestRunner.pdb
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/Temp/bin/Debug/UnityEngine.TestRunner.pdb
-/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
-/Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/obj/Debug/Assembly-CSharp.csproj.CopyComplete
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/obj/Debug/Assembly-CSharp.dll
 /Users/christopherwheeler/dev/GGJ-BullGame/Bull In A China Shop/obj/Debug/Assembly-CSharp.pdb
