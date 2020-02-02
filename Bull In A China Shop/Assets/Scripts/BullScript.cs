@@ -77,7 +77,10 @@ public partial class BullScript : MonoBehaviour
         var rotation = deltaTime * rotationDirection;
         remainingRotation -= rotation;
         this.transform.Rotate(0,rotation,0);
-        if(Math.Abs(remainingRotation)<3)this.seeking = false;
+        if (Math.Abs(remainingRotation) < 3)
+        {
+            this.seeking = false;
+        }
     }
 
     /// <summary>
