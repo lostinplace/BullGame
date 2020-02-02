@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 487321209}
   - component: {fileID: 487321208}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Bull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,18 +326,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b886a4e229114bebbae04aa8b1625ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gumTime: 4
   gumSpeed: 0.75
-  glueTime: 7
   glueSpeed: 0.6
-  bananaTime: 1
+  bananaStall: 5
+  bananaAngle: 90
   bananaExhaustion: 1.1
-  capeTime: 4
+  capeAngle: 90
   capeSpeed: 1.5
   capeExhaustion: 1.2
-  decoyTime: 1
   decoySpeed: 0.3
   decoyExhaustion: 1.5
+  bull: {fileID: 0}
 --- !u!4 &561782707
 Transform:
   m_ObjectHideFlags: 0
