@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Bull : MonoBehaviour
 {
-    protected BullNode currentTarget;
-
+    public float initialSpeed = .05f;
+    public float currentSpeed;
+    public bool chooseStartingNode = true;
+    public BullNode currentTarget;
     public enum ClockDirection
     {
         CLOCKWISE = 0, 
@@ -15,7 +17,28 @@ public class Bull : MonoBehaviour
     }
     protected delegate bool CheckAngleType( float queryAngle );
     protected delegate bool DesiredAngleQuality( float leftAngle, float rightAngle );
+
+    private void Awake() {
+        currentSpeed = initialSpeed;
+    }
+
+    void Update()
+    {
+        if( chooseStartingNode == true ) {
+            ChooseNextNode();
+            chooseStartingNode = false;
+        }
+        if( BullNode.nodes.Contains( currentTarget ) == true )
+        {
+            transform.position = Utility.XZLerpTo( 
+                    transform.position, 
+                    currentTarget.transform.position, currentSpeed );
+        }
+    }
+
+    
     /// <summary>
+    /// Note: Please substitute "cross - product" for "angle."
     /// Checks if an angle is "better" than another angle, basically
     /// 0: The angle is more "clockwise"/"counter clockwise"
     /// 1: The angle is "closer" on the XY plane to the angle the bull 
@@ -23,7 +46,10 @@ public class Bull : MonoBehaviour
     /// Priority is in that order.
     /// Example: 
     /// 11 o'clock is at a very close angle to 12 o'clock, however, it is in 
-    /// the counter clockwise direction, if we wanted to see
+    /// the counter clockwise direction, if we wanted an angle in the clockwise 
+    /// direction that was closer to 12 o'clock 2 o'clock may be better, but 
+    /// 1 o'clock would be even better, if we didnt find an angle in the clockwise 
+    /// direction 7 o'clock would be better than 11 o'clock.
     /// </summary>
     /// <param name="currentAngle">The angle the bull is currently 
     /// facing or the angle that is currently selected we would like to 
@@ -31,16 +57,16 @@ public class Bull : MonoBehaviour
     /// <param name="queryAngle">The angle we want to see if it is closer to 
     /// the current angle or direction the bull is currently facing.</param>
     /// <param name="angleQuery">A method to disern the "type" of an angle</param>
-    /// <param name="angleQuality">An inequality</param>
     /// <returns></returns>
     protected float RetrieveBetterAngle( float currentAngle, float queryAngle, 
-            CheckAngleType angleQuery, DesiredAngleQuality angleQuality)
+            CheckAngleType angleQuery )
     {
         return ( angleQuery( currentAngle ) &&
                 angleQuery( queryAngle ) && 
-                queryAngle < currentAngle ) ? 0.0f : 
+                Mathf.Abs( queryAngle ) < Mathf.Abs( currentAngle ) ) ? queryAngle : 
                         !angleQuery( currentAngle ) && angleQuery( queryAngle ) ? 
-                                queryAngle : queryAngle < currentAngle ? queryAngle : currentAngle;
+                                queryAngle : Mathf.Abs( queryAngle ) < 
+                                Mathf.Abs( currentAngle ) ? queryAngle : currentAngle;
     }
     /// <summary>
     /// Finds the next node the bull should run towards.
@@ -53,28 +79,34 @@ public class Bull : MonoBehaviour
     {
         if( BullNode.nodes.Count <= 0 )
             return null;
-        float currentAngle = float.MaxValue;
-        float angleWithRespectTooBull = float.MaxValue;
+        float angleWithRespectTooBull = float.MaxValue / 20.0f;
+        float currentAngle = float.MaxValue / 20.0f;
+        Debug.Log( currentAngle );
         //Save on memory.//
-        Vector2 currentNodePosition = new Vector2( 0.0f, 0.0f );
-        Vector2 bullPosition = Utility.ToXYPlane( transform.position ).normalized;
+        Vector3 currentNodePosition = new Vector3( 0.0f, 0.0f, 0.0f );
+        Vector3 bullPositionNormal = Utility.XZToXYPlane3D( transform.position ).normalized;
         if( direction == ClockDirection.SUPER_POSITION )
             direction = ( ClockDirection ) Random.Range( 0, 1 );
+        if( direction == ClockDirection.COUNTER_CLOCKWISE )
+            angleWithRespectTooBull = float.MinValue;
+        Debug.Log( direction );
+        int i = 0;
         foreach( BullNode currentNode in BullNode.nodes )
         {
-            Utility.ToXYPlane( currentNode.transform.position, out currentNodePosition );
-            /*It is not nessisary to divide the magnitude of the dot product of 
-            two normals to achive the angle, because the magnitude of a normal is 1.*/
-            angleWithRespectTooBull = Mathf.Acos( Vector2.Dot( bullPosition, currentNodePosition ) );
+            Utility.XZToXYPlane( currentNode.transform.position, out currentNodePosition );
+            angleWithRespectTooBull = Vector3.Cross( bullPositionNormal, currentNodePosition ).z;
+            Debug.Log( "Unmodified Current Angle@ " + i + ": " + currentAngle );
+            Debug.Log( "Angle " + i + ": " + angleWithRespectTooBull );
             //Find the smaller angle in the clockwise or counter clockwise direction.//
             if( direction == ClockDirection.CLOCKWISE ) {
                 currentAngle = RetrieveBetterAngle( currentAngle, angleWithRespectTooBull, 
-                        Utility.IsClockwiseAngle, Utility.LessThan );
+                        Utility.IsClockwiseAngle );
             }
             else {
                 currentAngle = RetrieveBetterAngle( currentAngle, angleWithRespectTooBull,
-                        Utility.IsCounterClockwiseAngle, Utility.GreaterThan );
+                        Utility.IsCounterClockwiseAngle );
             }
+            Debug.Log( "currentAngle@ " + i + ": " + currentAngle );
             if( currentAngle == angleWithRespectTooBull )
                 currentTarget = currentNode;
         }

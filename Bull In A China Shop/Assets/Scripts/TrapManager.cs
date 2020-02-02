@@ -78,9 +78,9 @@ public class TrapManager : MonoBehaviour
     // Actual trap's effect based on Trap enum type
     protected void TrapEffect(Trap trap)
     {
-        switch (trap)
+//        switch (trap)
         {
-            case Trap.Gum:
+           /* case Trap.Gum:
                 // Slow down bull by [gumSpeed] modifier
                 // (for [gumTime] amount of time?)
                 bull.GetComponent<BullScript>().ChangeSpeed((int) gumSpeed);
@@ -116,7 +116,7 @@ public class TrapManager : MonoBehaviour
             default:
                 // Something went wrong?
                 Debug.Log("This shouldn't happen?");
-                break;
+                break;*/
         }
     }
 

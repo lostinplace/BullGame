@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Shelf : BullNode
 {
-    bool isBroken = false;
+    public bool isBroken = false;
     void Start() {
         AddNode();
     }
     private void Break() {
         isBroken = true;
+        RemoveNode();
     }
     public override void OnTriggerEnter( Collider other )
     {
         Bull bull = other.gameObject.GetComponent< Bull >();
-        if( bull )
-        {
+        if( bull ) {
             Break();
             bull.ChooseNextNode();
-            RemoveNode();
         }
     }
 }
