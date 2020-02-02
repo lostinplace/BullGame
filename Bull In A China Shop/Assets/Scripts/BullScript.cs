@@ -11,7 +11,7 @@ public partial class BullScript : MonoBehaviour
 
     private bool seeking;
 
-    private float remainingRotation;
+    private Quaternion newTargetAngle;
     
     void OnCollisionEnter(Collision collision)
     {
@@ -29,7 +29,7 @@ public partial class BullScript : MonoBehaviour
     }
     
     [SerializeField] float moveSpeed = 20f;
-    [SerializeField] float rotationSpeed = 1.0f;
+    [SerializeField] float rotationSpeed = 100.0f;
     
     
     // Start is called before the first frame update
@@ -56,31 +56,32 @@ public partial class BullScript : MonoBehaviour
 
     public void BullStop()
     {
+        
         var animator = GetComponent<Animator>();
         this.dazed = true;
         animator.SetBool("Collided", true);
-        var newAngleValue = Random.Range(110f, 180);
-        var newDirection = Random.value < 0.5 ? -1 : 1;
-        var newAngle = newAngleValue * newDirection;
-        remainingRotation = newAngle;
+        animator.SetBool("Reset", false);
     }
 
     public void WakeBull()
     {
         this.dazed = false;
         this.seeking = true;
+        var animator = GetComponent<Animator>();
+        animator.SetBool("Collided", false);
+        
     }
 
     public void Seek(float deltaTime)
     {
-        var rotationDirection = this.remainingRotation < 0 ? -1 : 1;
-        var rotation = deltaTime * rotationDirection;
-        remainingRotation -= rotation;
-        this.transform.Rotate(0,rotation,0);
-        if (Math.Abs(remainingRotation) < 3)
+        this.transform.Rotate(Vector3.up, rotationSpeed*deltaTime);
+        if (false)
         {
-            this.seeking = false;
+            var animator = GetComponent<Animator>();
+            animator.SetBool("Reset", true);
         }
+        
+
     }
 
     /// <summary>

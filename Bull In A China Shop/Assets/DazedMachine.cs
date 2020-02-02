@@ -13,7 +13,7 @@ public class DazedMachine : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.normalizedTime > 3.5)
+        if (stateInfo.normalizedTime > 2)
         {
             var bullscript = animator.GetComponent<BullScript>();
             bullscript.WakeBull(); 

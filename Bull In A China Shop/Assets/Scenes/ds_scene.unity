@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  rotationSpeed: 1
+  rotationSpeed: 100
 --- !u!65 &352841342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -641,6 +641,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bull_Animated
+      objectReference: {fileID: 0}
+    - target: {fileID: 7153175970012984398, guid: 9b52016e6c403e841955b10c7e05a694,
+        type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b52016e6c403e841955b10c7e05a694, type: 3}
