@@ -6,8 +6,8 @@ public class BullScript : isoMetricMovement
 {
     void OnCollisionEnter(Collision collision) {
         switch (collision.gameObject.name.ToLower()) {
-            case "Cube.001":
-            case "Cube.002":
+            case "cube.001":
+            case "cube.002":
                 BullStop();
                     Debug.Log("Bull hit BackWall");
                 break;

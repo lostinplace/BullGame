@@ -209,9 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  duration: 180
-  timeRemaining: 0
-  isCountingDown: 0
+  horizontalDir: -0.3
+  verticalDir: 0.3
 --- !u!65 &352841342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -508,6 +507,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1734947926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4349707902411313972, guid: 973ef436237f24edbb60f5f1434fc580,
+    type: 3}
+  m_PrefabInstance: {fileID: 205534766}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1734947930
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734947926}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02000001, y: 0.019999998, z: 0.020000016}
+  m_Center: {x: 0.0015592602, y: -0.0004097279, z: 0.39268306}
 --- !u!1 &1920195205
 GameObject:
   m_ObjectHideFlags: 0
