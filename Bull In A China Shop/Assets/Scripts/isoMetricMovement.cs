@@ -31,28 +31,28 @@ public class isoMetricMovement : MonoBehaviour
 
 	void Update()
 	{
-
-	}
+        if (Input.anyKey) // only execute if a key is being pressed
+            Move();
+    }
 
     // Whatever starts the level should call 
     public void BullInit() {
         horizontalDir = -0.3f; 
         verticalDir = 0.3f;
 
+        BullStart();
+    }
+
+    public void BullStart() {
         bullMovement_coroutine = MoveBull();
         StartCoroutine(bullMovement_coroutine);
-
-        for (int i = 0; i< 50; i++)
-        {
-            Move();
-        }
-       
     }
 
     public void BullStop() {
         StopCoroutine(bullMovement_coroutine);
     }
 
+    //This is a coroutine that moves the bull
     IEnumerator MoveBull()
     {
         for (; ; )
@@ -72,7 +72,45 @@ public class isoMetricMovement : MonoBehaviour
 
 	public void ChangeStamina(int changeStaminaBy) { }
 
-	public void ChangeRotation(int rotation) { }
+	public void ChangeRotation(string turnDirection)
+    {
+        switch (turnDirection.ToLower()) 
+        {
+            case "left_45":
+                horizontalDir = -0.3f;
+                verticalDir = 0f;
+                break;
+            case "left_90":
+                horizontalDir = -0.3f;
+                verticalDir = -0.3f;
+                Move();
+                break;
+            case "left_135":
+                horizontalDir = 0f;
+                verticalDir = -0.3f;
+                break;
+            case "right_45":
+                horizontalDir = 0f;
+                verticalDir = 0.3f;
+                break;
+            case "right_90":
+                horizontalDir = 0.3f;
+                verticalDir = 0.3f;
+                break;
+            case "right_135":
+                horizontalDir = 0.3f;
+                verticalDir = 0f;
+                break;
+            case "reverse":
+                horizontalDir = 0.3f;
+                verticalDir = -0.3f;
+                break;
+        };
+
+        // We should get the Bull animation controller and trigger the running animation.
+
+        BullStart();
+    }
 
 
 	void Move()

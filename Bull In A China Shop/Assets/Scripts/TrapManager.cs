@@ -22,13 +22,13 @@ public class TrapManager : MonoBehaviour
     [Tooltip("How long the bull is stalled when affected by a banana peel trap.")]
     [SerializeField] private float bananaStall = 5f;
     [Tooltip("Angle that bull is rotated by in either direction when affected by a banana peel trap.")]
-    [SerializeField] private float bananaAngle = 90f;
+    [SerializeField] private string bananaAngle = "left_90";
     [Tooltip("Bull's exhaustion relative to maximum when affected by a banana peel trap.")] 
     [SerializeField] private float bananaExhaustion = 1.1f;
 
     [Header("Cape")]
     [Tooltip("Angle that bull is rotated by in either direction when affected by a cape trap.")]
-    [SerializeField] private float capeAngle = 90f;
+    [SerializeField] private string capeAngle = "left_90";
     [Tooltip("Bull's speed relative to maximum when affected by a cape trap.")]
     [SerializeField] private float capeSpeed = 1.5f;
     [Tooltip("Bull's exhaustion relative to maximum when a bull is when affected by a cape trap.")]
@@ -96,14 +96,14 @@ public class TrapManager : MonoBehaviour
                 // and increase exhaustion by [bananaExhaustion] modifier
                 // (for [bananaTime] amount of time?)
                 //bull.GetComponent<BullScript>().Stall(bananaStall);
-                bull.GetComponent<BullScript>().ChangeRotation((int) bananaAngle);
+                bull.GetComponent<BullScript>().ChangeRotation((string) bananaAngle);
                 bull.GetComponent<BullScript>().ChangeStamina((int)bananaExhaustion);
                 break;
             case Trap.Cape:
                 // Redirect bull by [capeAngle] in either direction,
                 // and speed up bull by [capeSpeed] modifier
                 // and increase exhaustion by [capeExhaustion] modifier 
-                bull.GetComponent<BullScript>().ChangeRotation((int) capeAngle);
+                bull.GetComponent<BullScript>().ChangeRotation((string) capeAngle);
                 bull.GetComponent<BullScript>().ChangeSpeed((int) capeSpeed);
                 bull.GetComponent<BullScript>().ChangeStamina((int) capeExhaustion);
                 break;
