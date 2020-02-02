@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleMenuHandler : MonoBehaviour
 {
+    //[SerializeField] private Scene nextScene = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,6 @@ public class TitleMenuHandler : MonoBehaviour
     public void ProgressToGameplay()
     {
         Debug.Log("BUTTON PRESSED SUCCESSFULLY");
-        SceneManager.LoadScene("ds_scene");
+        SceneManager.LoadScene(nextScene);
     }
 }
